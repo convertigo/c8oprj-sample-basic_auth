@@ -1,0 +1,54 @@
+authenticationType: Basic
+comment: HTTPBIN.ORG
+https: true
+port: 443
+server: httpbin.org
+↓Default_transaction [transactions.HttpTransaction]: 
+  ↑default: true
+↓get_credentials [transactions.JsonHttpTransaction]: 
+  handlers: 
+    →: |
+      '
+      // Handles the transaction start event.
+      function onTransactionStarted() {
+          var user = context.connector.getGivenAuthUser();
+          var pwd = context.connector.getGivenAuthPassword();
+          var token = context.encodeToHexString("secret", user + ":" + pwd);
+          
+          creds = context.addTextNodeUnderRoot("credentials", "");
+          context.addTextNode(creds, "user", user);
+          context.addTextNode(creds, "pwd", pwd);
+          context.addTextNode(creds, "token", token);
+          context.addTextNode(creds, "deciphred_token", context.decodeFromHexString("secret", token));
+          
+          return "cancel";
+      }
+      '
+↓set_credentials [transactions.JsonHttpTransaction]: 
+  httpInfo: true
+  subDir: basic-auth/{user}/{pwd}
+  handlers: 
+    →: |
+      '
+      // Handles the transaction start event.
+      function onTransactionStarted() {
+          context.connector.setGivenAuthUser(user);
+          context.connector.setGivenAuthPassword(pwd);
+      }
+      '
+  ↓Test_Case [core.TestCase]: 
+    ↓user [variables.TestCaseVariable-1739179866461]: 
+      value: gregoryv
+    ↓pwd [variables.TestCaseVariable-1739179866463]: 
+      value: 
+        - ↑ciphered: true
+        - ↑traceable: false
+        - →→: xd2f81b8096cde392b18ffd0b366a67a4
+      visibility: '-1'
+  ↓user [variables.RequestableHttpVariable-1739179842215]: 
+  ↓pwd [variables.RequestableHttpVariable-1739179856262]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: xd8e180806a1c1d83a6255212121ab827
+    visibility: '-1'

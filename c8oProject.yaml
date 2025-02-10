@@ -1,8 +1,10 @@
 ↑convertigo: 8.0.0.m006
 ↓BasicAuth [core.Project]: 
-  comment: Mashup Sequencer project
+  comment: Demo project for dynamic Basic Authentication
   contextTimeout: 59
   corsOrigin: =Origin
   httpSessionTimeout: 60
+  ↓HTTP_connector [connectors.HttpConnector]: 🗏 connectors/HTTP_connector.yaml
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
-  ↓NewSequence [sequences.GenericSequence]: 🗏 sequences/NewSequence.yaml
+  ↓Get_Auth_Basic [sequences.GenericSequence]: 🗏 sequences/Get_Auth_Basic.yaml
+  ↓Set_Auth_Basic [sequences.GenericSequence]: 🗏 sequences/Set_Auth_Basic.yaml

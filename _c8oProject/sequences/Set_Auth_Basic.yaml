@@ -1,0 +1,76 @@
+accessibility: Hidden
+comment: Set dynamic Basic user credentials
+↓Call_Transaction [steps.TransactionStep-1739182229973]: 
+  sourceTransaction: BasicAuth.HTTP_connector.set_credentials
+  ↓user [variables.StepVariable-1739182229975]: 
+  ↓pwd [variables.StepVariable-1739182229977]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: xd8e180806a1c1d83a6255212121ab827
+    visibility: '-1'
+↓Copy [steps.XMLCopyStep-1739182374477]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1739182229973
+        - java.lang.String: 
+          - ↑value: ./document/HttpInfo/status
+↓Copy1 [steps.XMLCopyStep-1739182400090]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1739182229973
+        - java.lang.String: 
+          - ↑value: ./document/object/authenticated
+↓IfIsIn [steps.IsInStep-1739182477897]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1739182229973
+        - java.lang.String: 
+          - ↑value: ./document/object/authenticated/text()
+  testDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: AND
+            - java.lang.String: 
+              - ↑value: true
+  ↓Copy1 [steps.XMLCopyStep-1739182507310]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1739182229973
+          - java.lang.String: 
+            - ↑value: ./document/object/user
+↓user [variables.RequestableVariable-1739182247429]: 
+  comment: Basic User
+↓pwd [variables.RequestableVariable-1739182247431]: 
+  comment: Basic Password
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: xd8e180806a1c1d83a6255212121ab827
+  visibility: '-1'
+↓Test_Case [core.TestCase]: 
+  ↓user [variables.TestCaseVariable-1739182283272]: 
+    value: gregoryv
+  ↓pwd [variables.TestCaseVariable-1739182283274]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: x4b9d45788bac0be00c18445be3a66fc2
+    visibility: '-1'

@@ -1,0 +1,23 @@
+accessibility: Hidden
+comment: Get dynamic Basic user credentials
+↓Call_Transaction [steps.TransactionStep-1739182575045]: 
+  sourceTransaction: BasicAuth.HTTP_connector.get_credentials
+↓token [steps.SimpleSourceStep-1739182628603]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1739182575045
+        - java.lang.String: 
+          - ↑value: ./document/credentials/token/text()
+  variableName: token
+↓Sequence_JS [steps.SimpleStep-1739182660876]: 
+  expression: |
+    var d_token = context.decodeFromHexString('secret', token);
+    log.warn("creds => " + d_token);
+    
+    var user = d_token.split(':')[0];
+    var pwd = d_token.split(':')[1];
+    
+    context.addTextNodeUnderRoot("user", user);
