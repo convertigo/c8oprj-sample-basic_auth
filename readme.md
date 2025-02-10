@@ -27,13 +27,13 @@ For more technical informations : [documentation](./project.md)
      <tr><td>To contribute</td><td>
 
      ```
-     BasicAuth=C:/Convertigo/Studio 8.3.2/workspace/BasicAuth/.git:branch=master
+     BasicAuth=https://github.com/convertigo/c8oprj-sample-basic_auth.git:branch=master
      ```
      </td></tr>
      <tr><td>To simply use</td><td>
 
      ```
-     BasicAuth=C:/Convertigo/Studio 8.3.2/workspace/BasicAuth//archive/master.zip
+     BasicAuth=https://github.com/convertigo/c8oprj-sample-basic_auth/archive/master.zip
      ```
      </td></tr>
     </table>
